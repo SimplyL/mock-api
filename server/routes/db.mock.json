@@ -1,0 +1,34 @@
+{
+  "person": [
+    {
+      "id": "ttt",
+      "name": "Tom",
+      "last_name": "Tomson",
+      "affordability_id": 1
+    },
+    {
+      "id": "jjj",
+      "name": "John",
+      "last_name": "Johnson",
+      "affordability_id": 2
+    }
+  ],
+  "affordability": [
+    {
+      "id": 1,
+      "affordability_max": { "value": 5, "exposure_id": 1 },
+      "affordability_min": { "value": 1.3, "exposure_id": 2 }
+    },
+    {
+      "id": 2,
+      "affordability_max": { "value": 8, "exposure_id": 3 },
+      "affordability_min": { "value": 2, "exposure_id": 4 }
+    }
+  ],
+  "exposure": [
+    { "id": 1, "values": [3.4, 2, 0, -1] },
+    { "id": 2, "values": [3.4, 2, 0, -1] },
+    { "id": 3, "values": [3.4, 2, 0, -1] },
+    { "id": 4, "values": [3.4, 2, 0, -1] }
+  ]
+}

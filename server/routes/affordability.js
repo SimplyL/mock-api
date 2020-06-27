@@ -4,9 +4,10 @@ const mockData = require("./db.mock.json");
 const router = express.Router();
 
 router.get("/:id", function(req, res, next) {
-  const data = mockData.person.find(({ id }) => id === req.params.id);
+  const data = mockData.affordability.find(({ id }) => id === Number(req.params.id));
   if (data) {
-    res.json(data);
+    const {id, ...rest} = data;
+    res.json(rest);
   } else {
     res.sendStatus(404);
   }

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Input, Button } from "reactstrap";
+import { Input, Button, Toast, ToastBody } from "reactstrap";
+import { getPerson, getAffordability, getExposure } from "./service";
 
 const App = () => {
   const [query, setQuery] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:9000/testAPI")
@@ -17,10 +19,17 @@ const App = () => {
     return false;
   };
 
-  const onClick = value => {
-    fetch(`http://localhost:9000/person/${value}`).then(res =>
-      console.log(res.json())
-    );
+  const onClick = async value => {
+    try {
+      const person = await getPerson(value);
+      const affordability = await getAffordability(person.affordability_id);
+      const exposure = await getExposure(
+        affordability.affordability_min.exposure_id
+      );
+      setError("");
+    } catch (error) {
+      setError("Incorrect query");
+    }
   };
 
   return (
@@ -37,6 +46,9 @@ const App = () => {
       >
         Submit
       </Button>
+      <Toast isOpen={!!error} className="bg-danger">
+        <ToastBody>{error}</ToastBody>
+      </Toast>
     </div>
   );
 };

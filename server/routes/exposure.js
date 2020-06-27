@@ -4,7 +4,7 @@ const mockData = require("./db.mock.json");
 const router = express.Router();
 
 router.get("/:id", function(req, res, next) {
-  const data = mockData.person.find(({ id }) => id === req.params.id);
+  const data = mockData.exposure.find(({ id }) => id === Number(req.params.id));
   if (data) {
     res.json(data);
   } else {
