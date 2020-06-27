@@ -1,6 +1,7 @@
 ### Application setup
 
-To run the application use instructions below.
+There are 2 mocked person ids, which can be used as input: 'abc', 'zxc'.
+To run the application use instructions below. 
 
 #### npm install
 Install needed packages both in client and server directories.
