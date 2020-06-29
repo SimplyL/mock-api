@@ -5,12 +5,8 @@ import Popover from "./components/Popover";
 import { getPerson, getAffordability, getExposure } from "./service";
 import { personActions } from "./modules/person.duck";
 
-const isValid = value => {
-  if (value.length > 0 && value.length <= 10 && !/[^a-z]/i.test(value)) {
-    return true;
-  }
-  return false;
-};
+const isValid = value =>
+  value.length > 0 && value.length <= 10 && !/[^a-z]/i.test(value);
 
 const calculateRatio = (minAffordability, exposure) =>
   exposure.reduce((a, b) => a + b, 0) * minAffordability;
@@ -53,12 +49,12 @@ const App = () => {
 
   return (
     <>
-      <div class="container min-vh-100">
-        <div class="d-flex row min-vh-100 justify-content-center align-items-center">
-          <div class="col-6 text-center border rounded p-4">
+      <div className="container min-vh-100">
+        <div className="d-flex row min-vh-100 justify-content-center align-items-center">
+          <div className="col-6 text-center border rounded p-4">
             <Input
               className="mb-3"
-              placeholder="Ender person id"
+              placeholder="Enter person id"
               type="text"
               value={query}
               onChange={e => setQuery(e.target.value)}
@@ -70,7 +66,6 @@ const App = () => {
             >
               Submit
             </Button>
-            {console.log(modal)}
             <Popover isOpen={modal} toggle={togglePopover} />
           </div>
         </div>
@@ -80,7 +75,9 @@ const App = () => {
         className="position-absolute"
         style={{ right: "10px", top: "10px" }}
       >
-        <ToastHeader icon="danger" toggle={() => setError("")}>Error</ToastHeader>
+        <ToastHeader icon="danger" toggle={() => setError("")}>
+          Error
+        </ToastHeader>
         <ToastBody>{error}</ToastBody>
       </Toast>
     </>
